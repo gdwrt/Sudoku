@@ -1,0 +1,90 @@
+system("color 00");//alterar cores
+    telacarregando(); //chamando função
+    for (menu = ENTER;menu == ENTER;){
+        do{
+            telaincio();
+            menu = tecla();
+        }while(menu != ENTER);
+
+        while (1){
+            if (kbhit()) //80 = Baixo, 72 = Cima, 77 = esquerda, 75 = direita, 13 = enter
+            {
+                dinamico = 1;
+                telamenu();
+                menu = tecla();
+
+                if ( (menu == ACIMA) || (menu == ACIMA_M) || (menu == SETAACIMA) )
+                {
+                    system("cls");
+                    telamenu();
+                    dinamico++;
+                    if (dinamico<7)
+                    {
+                     dinamico = 1;
+                    }
+
+                }
+                if ( (menu == ABAIXO) || (menu == ABAIXO_M) || (menu == SETAABAIXO) )
+                {
+                    system("cls");
+                    telamenu();
+                    dinamico--;
+                    if (dinamico <0)
+                    {
+                        dinamico = 6;
+                    }
+
+                }
+                if ( (menu == ESQUERDA) || (menu == ESQUERDA_M) || (menu == SETAESQUERDA) )
+                {
+                    system("cls");
+                    telamenu();
+                     if (dinamico <7)
+                    {
+                        dinamico = 6;
+                    }
+
+                }
+                if ( (menu == DIREITA) || (menu == DIREITA_M) || (menu == SETAACIMA) )
+                {
+                    system("cls");
+                    telamenu();
+                    if (dinamico <0)
+                    {
+                        dinamico = 6;
+                    }
+
+                }
+                if (menu == ENTER)
+                {
+                    switch (dinamico)
+                    {
+                        case 1:
+                            telacadastro();
+                            break;
+                        case 2:
+                            telajogo();
+                            break;
+                        case 3:
+                            telaranking();
+
+                            break;
+                        case 4:
+                            telaconfiguracao();
+
+                            break;
+                        case 5:
+                            telaajuda();
+
+                            break;
+                        case 6:
+                            telalimpa();
+                            break;
+                    }
+
+              }
+
+            }
+
+        }
+    }
